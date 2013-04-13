@@ -118,6 +118,25 @@ var main = function(){
 		}
 	    });
 	});
+
+        // 處理22K網站的資料
+        // 給一個函式當做參數, 函式的參數(data)是所有22K的資料(格式請參考22k.js)
+        // 當資料(data)取得成功時一一比對是否與這個頁面的公司名稱相同, 相同的話將所有相關的資料顯示出來
+        map22kData(function(data) {
+            data.forEach(function(item) {
+                if(params.name == item.companyName) {
+                    var package_info = {url: item.screenShot, name: "證據"};
+                    var rows = [];
+                    rows[1] = "'曾出現在揭露22K網站' 職稱:" + item.jobName + " 薪資:" + item.salary;
+                    rows[2] = "註記:";
+                    item.notes.forEach(function(elt) {
+                      rows[2] += (elt + " ");
+                    });
+                    
+                    chrome.extension.sendRequest({method: 'add_match', rows: rows, package_info: package_info}, function(response) {});
+                }
+            })
+        });
     }
 };
 

@@ -9,6 +9,7 @@
       "scripts": ["background.js"]
   },
   "permissions": [
+      "http://www.22kopendata.org/",
       "http://jobhelper.g0v.ronny.tw/",
       "http://www.104.com.tw/",
       "http://www.104temp.com.tw/",
@@ -32,7 +33,7 @@
 	"http://www.yes123.com.tw/*",
 	"http://www.518.com.tw/*"
       ],
-      "js" : ["jquery.min.js", "common.js", "contentscript.js"],
+      "js" : ["jquery.min.js", "common.js", "22k.js", "contentscript.js"],
       "run_at" : "document_idle",
       "all_frames" : false
     }
